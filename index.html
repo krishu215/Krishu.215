@@ -3,196 +3,302 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>Apna Mens Wear</title>
-<link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;600&display=swap" rel="stylesheet">
+<title>Krishna Namdev | Portfolio</title>
+<link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;600;700&display=swap" rel="stylesheet">
+
 <style>
-*{margin:0;padding:0;box-sizing:border-box;font-family:Poppins,sans-serif}
-body{background:#f5f7fa;color:#333}
-header{background:#1f2937;color:#fff;padding:15px;text-align:center;position:sticky;top:0;z-index:1000;}
-header h1{font-size:22px}
-header p{font-size:14px;opacity:0.8}
-.filters{display:flex;gap:10px;overflow-x:auto;padding:10px;background:#fff;}
-.filters button{padding:8px 15px;border:none;border-radius:20px;background:#e5e7eb;cursor:pointer;font-size:14px;white-space:nowrap;}
-.filters button.active{background:#1f2937;color:#fff}
-.products{display:grid;grid-template-columns:repeat(auto-fit,minmax(150px,1fr));gap:15px;padding:15px;}
-.card{background:#fff;border-radius:10px;box-shadow:0 4px 10px rgba(0,0,0,0.05);padding:10px;transition:0.3s;display:flex;flex-direction:column;}
-.card img{width:100%;height:170px;object-fit:cover;border-radius:8px;}
-.card h3{font-size:14px;margin:8px 0}
-.card p{font-size:12px;color:#666}
-.price{font-weight:600;margin:5px 0}
-.card button{background:#1f2937;color:#fff;border:none;padding:8px;border-radius:6px;cursor:pointer;margin-top:auto;}
-.cart-btn{position:fixed;bottom:20px;right:20px;background:#1f2937;color:#fff;padding:12px 16px;border-radius:50px;cursor:pointer;box-shadow:0 4px 10px rgba(0,0,0,0.3);z-index:2000;}
-.cart-count{background:red;padding:2px 6px;border-radius:50%;font-size:12px;margin-left:5px;}
-.cart-modal{position:fixed;top:0;left:0;width:100%;height:100%;background:rgba(0,0,0,0.5);display:none;justify-content:center;align-items:center;z-index:3000;}
-.cart-content{background:#fff;width:95%;max-width:450px;max-height:90vh;overflow-y:auto;border-radius:10px;padding:15px;}
-.cart-item{display:flex;justify-content:space-between;align-items:center;margin:10px 0;font-size:14px;}
-.qty-btn{padding:2px 8px;border:none;background:#ddd;cursor:pointer;border-radius:4px;}
-.total{font-weight:600;margin:10px 0;}
-.checkout-form input,.checkout-form textarea{width:100%;padding:8px;margin:5px 0;border-radius:5px;border:1px solid #ccc;}
-.checkout-form button{width:100%;padding:10px;border:none;background:#1f2937;color:#fff;border-radius:6px;margin-top:10px;}
-.whatsapp{position:fixed;bottom:20px;left:20px;background:#25D366;color:#fff;padding:12px;border-radius:50%;text-decoration:none;font-size:18px;}
-.success{background:#d1fae5;padding:10px;margin-top:10px;border-radius:6px;display:none;}
+:root{
+--bg:#0f172a;
+--card:#1e293b;
+--accent:#3b82f6;
+--text:#f1f5f9;
+--muted:#94a3b8;
+}
+
+*{
+margin:0;
+padding:0;
+box-sizing:border-box;
+font-family:'Poppins',sans-serif;
+scroll-behavior:smooth;
+}
+
+body{
+background:var(--bg);
+color:var(--text);
+line-height:1.6;
+}
+
+header{
+padding:20px 10%;
+display:flex;
+justify-content:space-between;
+align-items:center;
+position:sticky;
+top:0;
+background:rgba(15,23,42,0.95);
+backdrop-filter:blur(10px);
+z-index:1000;
+}
+
+header h1{
+font-size:20px;
+font-weight:600;
+color:var(--accent);
+}
+
+nav a{
+color:var(--text);
+text-decoration:none;
+margin-left:20px;
+font-size:14px;
+transition:0.3s;
+}
+
+nav a:hover{
+color:var(--accent);
+}
+
+section{
+padding:80px 10%;
+opacity:0;
+transform:translateY(40px);
+transition:all 0.8s ease;
+}
+
+section.show{
+opacity:1;
+transform:translateY(0);
+}
+
+.hero{
+min-height:90vh;
+display:flex;
+flex-direction:column;
+justify-content:center;
+}
+
+.hero h2{
+font-size:36px;
+margin-bottom:10px;
+}
+
+.hero span{
+color:var(--accent);
+}
+
+.hero p{
+color:var(--muted);
+max-width:500px;
+margin-bottom:20px;
+}
+
+.btn{
+display:inline-block;
+padding:10px 20px;
+background:var(--accent);
+color:#fff;
+text-decoration:none;
+border-radius:6px;
+transition:0.3s;
+}
+
+.btn:hover{
+opacity:0.85;
+}
+
+h3{
+font-size:26px;
+margin-bottom:30px;
+color:var(--accent);
+}
+
+.about p{
+max-width:700px;
+color:var(--muted);
+}
+
+.skills-grid{
+display:grid;
+grid-template-columns:repeat(auto-fit,minmax(150px,1fr));
+gap:15px;
+}
+
+.skill{
+background:var(--card);
+padding:15px;
+border-radius:8px;
+text-align:center;
+transition:0.3s;
+}
+
+.skill:hover{
+transform:translateY(-5px);
+background:#24324a;
+}
+
+.projects-grid{
+display:grid;
+grid-template-columns:repeat(auto-fit,minmax(280px,1fr));
+gap:20px;
+}
+
+.project{
+background:var(--card);
+padding:20px;
+border-radius:10px;
+transition:0.3s;
+}
+
+.project:hover{
+transform:translateY(-8px);
+background:#24324a;
+}
+
+.project h4{
+margin-bottom:10px;
+}
+
+.project p{
+color:var(--muted);
+font-size:14px;
+margin-bottom:10px;
+}
+
+.project a{
+color:var(--accent);
+font-size:14px;
+text-decoration:none;
+}
+
+.contact-box{
+background:var(--card);
+padding:25px;
+border-radius:10px;
+max-width:500px;
+}
+
+.contact-box p{
+margin:10px 0;
+color:var(--muted);
+}
+
+footer{
+text-align:center;
+padding:20px;
+font-size:14px;
+color:var(--muted);
+border-top:1px solid #1e293b;
+}
+
+@media(max-width:768px){
+header{
+flex-direction:column;
+gap:10px;
+}
+nav a{
+margin:0 10px;
+}
+.hero h2{
+font-size:28px;
+}
+}
 </style>
 </head>
+
 <body>
 
 <header>
-<h1>Apna Mens Wear</h1>
-<p>One line — Shirts | Bholaram Ustad</p>
+<h1>Krishna Namdev</h1>
+<nav>
+<a href="#about">About</a>
+<a href="#skills">Skills</a>
+<a href="#projects">Projects</a>
+<a href="#contact">Contact</a>
+</nav>
 </header>
 
-<div class="filters">
-<button class="active" onclick="filterProducts('All',event)">All</button>
-<button onclick="filterProducts('Shirts',event)">Shirts</button>
-<button onclick="filterProducts('Jeans',event)">Jeans</button>
-<button onclick="filterProducts('Kurta',event)">Kurta</button>
+<section class="hero show">
+<h2>Hello, I'm <span>Krishna Namdev</span></h2>
+<p>I build clean, fast and modern websites with strong focus on design and performance. Passionate about coding and creating digital experiences.</p>
+<a href="#projects" class="btn">View My Work</a>
+</section>
+
+<section id="about" class="about">
+<h3>About Me</h3>
+<p>
+I am Krishna Namdev, a passionate web developer with strong interest in computer technology and programming.
+I specialize in HTML, website design, and Java development. I enjoy building responsive,
+modern websites that are both functional and visually appealing.
+</p>
+</section>
+
+<section id="skills">
+<h3>Skills</h3>
+<div class="skills-grid">
+<div class="skill">Computer</div>
+<div class="skill">Coding</div>
+<div class="skill">HTML</div>
+<div class="skill">Website Design</div>
+<div class="skill">Java</div>
+</div>
+</section>
+
+<section id="projects">
+<h3>Projects</h3>
+<div class="projects-grid">
+
+<div class="project">
+<h4>Apna Mens Wear Website</h4>
+<p>Complete online order collection website for local clothing store with cart and email system.</p>
+<p><strong>Tech Used:</strong> HTML, CSS, JavaScript</p>
+<a href="#" target="_blank">View Project</a>
 </div>
 
-<div class="products" id="productList"></div>
-
-<div class="cart-btn" onclick="openCart()">
-Cart <span class="cart-count" id="cartCount">0</span>
+<div class="project">
+<h4>Personal Portfolio Website</h4>
+<p>Modern dark-themed responsive portfolio with smooth animations and clean layout.</p>
+<p><strong>Tech Used:</strong> HTML, CSS, JavaScript</p>
+<a href="#" target="_blank">View Project</a>
 </div>
 
-<a class="whatsapp" href="https://wa.me/919244354361" target="_blank">💬</a>
-
-<div class="cart-modal" id="cartModal">
-<div class="cart-content">
-<h2>Your Cart</h2>
-<div id="cartItems"></div>
-<div class="total" id="grandTotal"></div>
-
-<form class="checkout-form"
-action="https://formspree.io/f/xbdabyza"
-method="POST">
-
-<input type="hidden" name="orderDetails" id="orderDetails">
-
-<input type="text" name="Customer Name" placeholder="Full Name" required>
-<input type="tel" name="Phone Number" placeholder="Phone Number" required>
-<textarea name="Delivery Address" placeholder="Delivery Address" required></textarea>
-<textarea name="Special Instructions" placeholder="Special Instructions (Optional)"></textarea>
-
-<button type="submit">Place Order</button>
-</form>
-
-<div class="success" id="successMsg">
-Order placed! Apna Mens Wear will contact you on WhatsApp to confirm.
+<div class="project">
+<h4>Java Mini Application</h4>
+<p>Simple Java-based desktop utility application demonstrating OOP concepts.</p>
+<p><strong>Tech Used:</strong> Java</p>
+<a href="#" target="_blank">View Project</a>
 </div>
 
-<button onclick="closeCart()" style="margin-top:10px">Close</button>
 </div>
+</section>
+
+<section id="contact">
+<h3>Contact</h3>
+<div class="contact-box">
+<p><strong>Email:</strong> Krishnanamdev382@gmail.com</p>
+<p><strong>Phone:</strong> 9244354361</p>
+<p>If you'd like to work together or have any project idea, feel free to contact me.</p>
 </div>
+</section>
+
+<footer>
+© 2026 Krishna Namdev. All Rights Reserved.
+</footer>
 
 <script>
-const products=[
-{name:"Slim Fit White Shirt",price:899,category:"Shirts",img:"https://i.ibb.co/3WwYF3S/shirt1.jpg",desc:"Premium cotton slim fit shirt"},
-{name:"Blue Casual Shirt",price:799,category:"Shirts",img:"https://i.ibb.co/6X7H9zp/shirt2.jpg",desc:"Perfect for daily wear"},
-{name:"Black Formal Shirt",price:999,category:"Shirts",img:"https://i.ibb.co/hfLkz6P/shirt3.jpg",desc:"Elegant office wear"},
-{name:"Classic Blue Jeans",price:1299,category:"Jeans",img:"https://i.ibb.co/4VZ4Y0K/jeans1.jpg",desc:"Comfort stretch denim"},
-{name:"Black Skinny Jeans",price:1399,category:"Jeans",img:"https://i.ibb.co/pb7CwT8/jeans2.jpg",desc:"Modern slim fit look"},
-{name:"Ripped Style Jeans",price:1499,category:"Jeans",img:"https://i.ibb.co/xG7XzX1/jeans3.jpg",desc:"Trendy casual design"},
-{name:"White Kurta",price:1199,category:"Kurta",img:"https://i.ibb.co/8NQf9YF/kurta1.jpg",desc:"Traditional festive wear"},
-{name:"Printed Kurta",price:1299,category:"Kurta",img:"https://i.ibb.co/6FJbH3M/kurta2.jpg",desc:"Stylish ethnic look"}
-];
+const sections=document.querySelectorAll("section");
 
-let cart=JSON.parse(localStorage.getItem("cart"))||[];
-
-function displayProducts(list){
-const container=document.getElementById("productList");
-container.innerHTML="";
-list.forEach((p,i)=>{
-container.innerHTML+=`
-<div class="card">
-<img src="${p.img}" alt="${p.name}" loading="lazy">
-<h3>${p.name}</h3>
-<p>${p.desc}</p>
-<div class="price">₹${p.price}</div>
-<button onclick="addToCart(${i})">Add to Cart</button>
-</div>`;
+window.addEventListener("scroll",()=>{
+sections.forEach(sec=>{
+const top=window.scrollY;
+const offset=sec.offsetTop-400;
+const height=sec.offsetHeight;
+if(top>=offset && top<offset+height){
+sec.classList.add("show");
+}
 });
-}
-
-function filterProducts(category,e){
-document.querySelectorAll(".filters button").forEach(btn=>btn.classList.remove("active"));
-e.target.classList.add("active");
-if(category==="All"){displayProducts(products)}
-else{displayProducts(products.filter(p=>p.category===category))}
-}
-
-function addToCart(index){
-let item=products[index];
-let existing=cart.find(p=>p.name===item.name);
-if(existing){existing.qty++}
-else{cart.push({...item,qty:1})}
-saveCart();
-}
-
-function saveCart(){
-localStorage.setItem("cart",JSON.stringify(cart));
-updateCartCount();
-}
-
-function updateCartCount(){
-document.getElementById("cartCount").innerText=
-cart.reduce((a,b)=>a+b.qty,0);
-}
-
-function openCart(){
-document.getElementById("cartModal").style.display="flex";
-renderCart();
-}
-
-function closeCart(){
-document.getElementById("cartModal").style.display="none";
-}
-
-function renderCart(){
-const container=document.getElementById("cartItems");
-container.innerHTML="";
-let total=0;
-cart.forEach((item,i)=>{
-total+=item.price*item.qty;
-container.innerHTML+=`
-<div class="cart-item">
-${item.name} (₹${item.price})
-<div>
-<button class="qty-btn" onclick="changeQty(${i},-1)">-</button>
-${item.qty}
-<button class="qty-btn" onclick="changeQty(${i},1)">+</button>
-<button class="qty-btn" onclick="removeItem(${i})">x</button>
-</div>
-</div>`;
 });
-document.getElementById("grandTotal").innerText="Total: ₹"+total;
-document.getElementById("orderDetails").value=generateOrderSummary(total);
-}
-
-function changeQty(i,val){
-cart[i].qty+=val;
-if(cart[i].qty<=0){cart.splice(i,1)}
-saveCart();
-renderCart();
-}
-
-function removeItem(i){
-cart.splice(i,1);
-saveCart();
-renderCart();
-}
-
-function generateOrderSummary(total){
-let summary="Order Details:\n\n";
-cart.forEach(item=>{
-summary+=`${item.name} | Qty: ${item.qty} | ₹${item.price*item.qty}\n`;
-});
-summary+=`\nGrand Total: ₹${total}`;
-return summary;
-}
-
-displayProducts(products);
-updateCartCount();
 </script>
 
 </body>
-                                                         </html>
+</html>
